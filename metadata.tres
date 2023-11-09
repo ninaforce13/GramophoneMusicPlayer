@@ -1,17 +1,17 @@
 [gd_resource type="Resource" load_steps=2 format=2]
 
-[ext_resource path="res://mods/gramophone_music_mod/mod_load.gd" type="Script" id=1]
+[ext_resource path="res://mods/gramophone_music_mod/Scripts/mod_load.gd" type="Script" id=1]
 
 [resource]
 script = ExtResource( 1 )
 id = "gramophone_music_mod"
 name = "Gramophone Music"
 version_code = 0
-version_string = "1.6.0"
+version_string = "1.6.1"
 author = "NCrafters"
 save_file_format_tag = ""
 save_file_format_tag_version = 0
 network_protocol_tag = ""
-modified_files = [ "res://world/objects/static_physics/gramophone_props/gramophone/gramophone_player.tscn" ]
+modified_files = [  ]
 modified_dirs = [  ]
 translations = [  ]

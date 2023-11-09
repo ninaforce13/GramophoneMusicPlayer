@@ -1,21 +1,21 @@
 [gd_scene load_steps=25 format=2]
 
-[ext_resource path="res://menus/menu_bg_fade.shader" type="Shader" id=1]
-[ext_resource path="res://mods/gramophone_music_mod/MusicSelectScreen.gd" type="Script" id=2]
+[ext_resource path="res://ui/buttons/battle_focus_stylebox.tres" type="StyleBox" id=1]
+[ext_resource path="res://mods/gramophone_music_mod/Scripts/MusicSelectScreen.gd" type="Script" id=2]
 [ext_resource path="res://ui/battle_theme.tres" type="Theme" id=3]
-[ext_resource path="res://addons/misc_utils/OverscanMarginContainer.gd" type="Script" id=4]
-[ext_resource path="res://menus/background.png" type="Texture" id=5]
+[ext_resource path="res://menus/menu_bg_fade.shader" type="Shader" id=4]
+[ext_resource path="res://addons/misc_utils/OverscanMarginContainer.gd" type="Script" id=5]
 [ext_resource path="res://nodes/menus/AutoFocusConnector.gd" type="Script" id=6]
-[ext_resource path="res://nodes/menus/InputMappedButton.gd" type="Script" id=7]
-[ext_resource path="res://menus/BackButtonPanel.gd" type="Script" id=8]
-[ext_resource path="res://nodes/menus/RowFocusIndicator.tscn" type="PackedScene" id=9]
-[ext_resource path="res://nodes/menus/ScrollIndicator.gd" type="Script" id=10]
+[ext_resource path="res://menus/background.png" type="Texture" id=7]
+[ext_resource path="res://nodes/menus/InputMappedButton.gd" type="Script" id=8]
+[ext_resource path="res://menus/BackButtonPanel.gd" type="Script" id=9]
+[ext_resource path="res://nodes/menus/RowFocusIndicator.tscn" type="PackedScene" id=10]
 [ext_resource path="res://nodes/menus/AutoScrollContainer.gd" type="Script" id=11]
-[ext_resource path="res://ui/buttons/battle_focus_stylebox.tres" type="StyleBox" id=12]
+[ext_resource path="res://nodes/menus/ScrollIndicator.gd" type="Script" id=12]
 
 [sub_resource type="ShaderMaterial" id=22]
 resource_local_to_scene = true
-shader = ExtResource( 1 )
+shader = ExtResource( 4 )
 shader_param/progress = 1.0
 shader_param/max_alpha = 1.0
 shader_param/base_color = Color( 0.1686, 0.1098, 0.2235, 1 )
@@ -194,7 +194,7 @@ margin_left = 6.0
 margin_top = 4.0
 margin_right = 1914.0
 margin_bottom = 1076.0
-texture = ExtResource( 5 )
+texture = ExtResource( 7 )
 expand = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -219,7 +219,7 @@ custom_constants/margin_right = 0
 custom_constants/margin_top = 97
 custom_constants/margin_left = 0
 custom_constants/margin_bottom = 97
-script = ExtResource( 4 )
+script = ExtResource( 5 )
 horizontal_margin = false
 
 [node name="MarginContainer" type="MarginContainer" parent="Scroller/OverscanMarginContainer"]
@@ -247,7 +247,7 @@ custom_constants/margin_bottom = 20
 margin_top = 20.0
 margin_bottom = 858.0
 
-[node name="RowFocusIndicator" parent="Scroller/OverscanMarginContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource( 9 )]
+[node name="RowFocusIndicator" parent="Scroller/OverscanMarginContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource( 10 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 0.0
@@ -269,7 +269,7 @@ margin_right = 800.0
 margin_bottom = 975.0
 mouse_filter = 2
 custom_styles/panel = SubResource( 6 )
-script = ExtResource( 10 )
+script = ExtResource( 12 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -344,7 +344,7 @@ custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 3
 custom_constants/shadow_offset_y = 3
-custom_styles/normal = ExtResource( 12 )
+custom_styles/normal = ExtResource( 1 )
 text = "Test"
 align = 1
 valign = 1
@@ -360,7 +360,7 @@ size_flags_horizontal = 8
 size_flags_vertical = 8
 theme = ExtResource( 3 )
 custom_styles/panel = SubResource( 12 )
-script = ExtResource( 8 )
+script = ExtResource( 9 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="BackButtonPanel"]
 margin_left = 84.0
@@ -386,7 +386,7 @@ custom_styles/disabled = SubResource( 13 )
 custom_styles/normal = SubResource( 13 )
 text = "Set Overworld Track"
 expand_icon = true
-script = ExtResource( 7 )
+script = ExtResource( 8 )
 action = "ui_accept"
 
 [node name="Preview" type="Button" parent="BackButtonPanel/HBoxContainer"]
@@ -402,7 +402,7 @@ custom_styles/disabled = SubResource( 13 )
 custom_styles/normal = SubResource( 13 )
 text = "Preview Track"
 expand_icon = true
-script = ExtResource( 7 )
+script = ExtResource( 8 )
 action = "ui_action_2"
 
 [node name="Set Battle Music" type="Button" parent="BackButtonPanel/HBoxContainer"]
@@ -418,7 +418,7 @@ custom_styles/disabled = SubResource( 13 )
 custom_styles/normal = SubResource( 13 )
 text = "Set Battle Track"
 expand_icon = true
-script = ExtResource( 7 )
+script = ExtResource( 8 )
 action = "ui_action_1"
 
 [node name="BackButton" type="Button" parent="BackButtonPanel/HBoxContainer"]
@@ -434,7 +434,7 @@ custom_styles/disabled = SubResource( 13 )
 custom_styles/normal = SubResource( 13 )
 text = "UI_BUTTON_BACK"
 expand_icon = true
-script = ExtResource( 7 )
+script = ExtResource( 8 )
 action = "ui_cancel"
 
 [connection signal="resized" from="BackButtonPanel/HBoxContainer" to="BackButtonPanel" method="_on_HBoxContainer_resized"]

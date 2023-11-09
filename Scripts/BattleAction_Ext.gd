@@ -5,6 +5,7 @@ func _run():
 	if e == null:
 		push_error("Couldn't find EncounterConfig for BattleAction")
 		return false
+	print("modded script ran")
 	if music_mod_override():
 		e.music_override = load_music()	
 		e.music_vox_override = load_music()	
@@ -14,19 +15,17 @@ func _run():
 	return _handle_battle_result(result)
 	
 func music_mod_override()->bool:
-	if not SaveState.other_data.has("GramophoneModProperties"):
+	if not SaveState.other_data.has("GramophonePlayerData"):
 		return false
-	if not SaveState.other_data.GramophoneModProperties.has("battle_track"):
-		return false
-	if SaveState.other_data.GramophoneModProperties["battle_track"] == "":	
+	if not SaveState.other_data.GramophonePlayerData.has("BattleData"):
 		return false
 	return true
 
 func load_music():
-	if SaveState.other_data.GramophoneModProperties["altload"]:
-		return load_external_ogg(SaveState.other_data.GramophoneModProperties["battle_track"])
+	if SaveState.other_data.GramophonePlayerData.BattleData.altload:
+		return load_external_ogg(SaveState.other_data.GramophonePlayerData.BattleData.path)
 	else:
-		return load(SaveState.other_data.GramophoneModProperties["battle_track"])
+		return load(SaveState.other_data.GramophonePlayerData.BattleData.path)
 
 func load_external_ogg(path):
 	var ogg_file = File.new()

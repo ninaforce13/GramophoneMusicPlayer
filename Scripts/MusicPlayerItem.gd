@@ -10,7 +10,7 @@ func _use_in_world(_node, _context, _arg):
 	return true
 
 func open_track_list():
-	var scene = load("res://mods/gramophone_music_mod/MusicSelectScene.tscn")	
+	var scene = load("res://mods/gramophone_music_mod/Menus/MusicSelectScene.tscn")	
 	var menu = scene.instance()
 	menu.title = "Overworld Music"
 	menu.is_mobile = true

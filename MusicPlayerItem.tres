@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
-[ext_resource path="res://mods/gramophone_music_mod/MusicPlayerItem.gd" type="Script" id=1]
+[ext_resource path="res://mods/gramophone_music_mod/Scripts/MusicPlayerItem.gd" type="Script" id=1]
 [ext_resource path="res://sprites/illustration/cassette_player.png" type="Texture" id=2]
 
 [resource]
