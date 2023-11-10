@@ -21,14 +21,16 @@ func music_mod_override()->bool:
 		return false
 	return true
 
-func load_music():
-	if SaveState.other_data.GramophonePlayerData.BattleData.altload:
+func load_music():	
+	if SaveState.other_data.GramophonePlayerData.BattleData.altload or SaveState.other_data.GramophonePlayerData.BattleData.path == "mute":
 		return load_external_ogg(SaveState.other_data.GramophonePlayerData.BattleData.path)
 	else:
 		return load(SaveState.other_data.GramophonePlayerData.BattleData.path)
 
 func load_external_ogg(path):
-	var ogg_file = File.new()
+	if path == "mute":
+		return AudioStreamMP3.new()
+	var ogg_file = File.new()	
 	var err = ogg_file.open(path, File.READ)
 	if err != OK:
 		return null

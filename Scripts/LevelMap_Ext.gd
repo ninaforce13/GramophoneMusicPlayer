@@ -36,6 +36,8 @@ func _update_music():
 			SaveState.other_data.GramophonePlayerData.OverworldData.previous_path = alt_track
 		if alt_track == "":
 			SaveState.other_data.GramophonePlayerData.OverworldData.previous_path = "" 
+		if alt_track == "mute":
+			music = null
 		if MusicSystem.current_track == music:
 			return 
 		if music == null:

@@ -148,9 +148,9 @@ func _on_Preview_pressed():
 			if child == focus_owner:
 				break
 			index += 1
-
-		if index != 0:
-			var alt_load_flag:bool = index >= 65 if not DLC.has_dlc("pier") else index >= 74
+		var name = music_list[index][1]
+		if index != 0 and index != 1:
+			var alt_load_flag:bool = index >= 66 if not DLC.has_dlc("pier") else index >= 75
 			if alt_load_flag:
 				track = load_external_ogg(music_list[index][1])
 				if track == null:
@@ -160,7 +160,7 @@ func _on_Preview_pressed():
 			else:
 				track = load(music_list[index][1])
 				track_path = music_list[index][1]
-		else:
+		elif index == 0:
 			if WorldSystem.time.is_night():			
 				track = SceneManager.current_scene.region_settings.music_night
 				track_path = ""
@@ -168,6 +168,8 @@ func _on_Preview_pressed():
 			else:
 				track = SceneManager.current_scene.region_settings.music_day
 				track_path = ""
+		else:
+			MusicSystem.fade_out()
 		MusicSystem.play_now(track)
 		SaveState.other_data.GramophonePlayerData.OverworldData["previous_track"] = track_path	
 
@@ -188,7 +190,7 @@ func _on_Set_Overworld_Music_pressed():
 	if not track_data:
 		return
 	var confirm_msg:String
-	var location = "Cafe" if not is_mobile else "Oveerworld"
+	var location = "Cafe" if not is_mobile else "Overworld"
 	if not is_mobile:		
 		confirm_msg = "Set [" + track_data["name"] + "] as Cafe Music?"
 		SaveState.other_data.GramophonePlayerData["CafeData"] = track_data
@@ -234,7 +236,7 @@ func get_track_data()->Dictionary:
 			if child == focus_owner:
 				break
 			index += 1
-		var alt_load_flag:bool = index >= 65 if not DLC.has_dlc("pier") else index >= 74
+		var alt_load_flag:bool = index >= 66 if not DLC.has_dlc("pier") else index >= 75
 		if alt_load_flag:
 			print("alternate load flag set.")
 		track_data["name"] = music_list[index][0]
